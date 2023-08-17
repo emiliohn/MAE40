@@ -11,16 +11,15 @@ A  =[ -1   1  1   0;   %  -IL + IC + IRload = 0
       0   0  -Rload  1];  % IRload*Rload = Vo = 0 
 b  =[ 0; Vi; 0; 0]; 
 x=A\b; Vo_HPF1biased = simplify(x(4))
-% Question 2
+%% Question 2
 for i=1:3
     zeta=[.1 .7 1];
 omega4 = 10; F_LPF2 = RR_tf([omega4^2],[1 2*zeta(i)*omega4 omega4^2]);
-figure(1), hold on, RR_bode(F_LPF2)
-
+figure(1), RR_bode(F_LPF2)
 end
 
 
-% Question 3
+%% Question 3
 %  x={IL, IC, IRd, ICd, V1, V2}
 syms L s C Rd Cd Vo
 A  =[ 1  -1  -1  0  0  0;   %  IL - IC - IRd = 0
@@ -33,7 +32,7 @@ b  =[ 0; 0; Vo; 0; 0; 0];
 x=A\b; Vo_LPF2Regulated = simplify(x(5))
 
 
-% Question 4
+%% Question 4
 %  x={IL, IC, IRd, ICd, V1, V2}
 syms L s C Vo
 
@@ -47,6 +46,5 @@ A  =[ 1  -1  -1  0  0  0;   %  IL - IC - IRd = 0
 b  =[ 0; 0; Vo; 0; 0; 0]; 
 x=A\b; Vo_LPF2wRdandCd = simplify(x(5));
 
-omega = 10; F_LPF2wRdandCd = RR_tf([1 omega],[(1/1600) 5*(1/1600)*omega 1 omega]); 
-RR_bode(F_LPF2wRdandCd)
-hold off
+omega = 10; F_LPF2 = RR_tf([1 omega],[C*L omega omega^2]);
+figure(2), RR_bode(F_LPF2)
