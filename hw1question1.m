@@ -4,6 +4,7 @@
 % Second-order low-pass LC filter: 
 % Solve for Vo as a function of Vi 
 % x={IL,IC, IRload, Vo}  <-- unknown vector
+
 syms L s C Rload Vi
 A  =[ -1   1  1   0;   %  -IL + IC + IRload = 0
       L*s   0   0  1;  % L*(d/dt(IL)) + Vo = Vi
