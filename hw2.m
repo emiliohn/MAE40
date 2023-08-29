@@ -19,7 +19,6 @@ RR_bode(F)
 hold off
 
 %% Question 2
-%% Question 1
 syms s C_a R_b R_c C_d Vo
 % x = [V1, V2, I_a, I_b, I_c, I_d]
 
